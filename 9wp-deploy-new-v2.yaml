@@ -28,7 +28,7 @@ spec:
         - name: WORDPRESS_DB_USER
           value: wordpress
         - name: WORDPRESS_DB_NAME
-          value: wordpress  
+          value: wordpress
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -41,12 +41,6 @@ spec:
         - name: data
           mountPath: /var/www/html
       volumes:
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteMany" ]
-      storageClassName: "longhorn"
-      resources:
-        requests:
-          storage: 5Gi
+      - name: data
+        persistentVolumeClaim:
+          claimName: mysql-pvc-rwx
