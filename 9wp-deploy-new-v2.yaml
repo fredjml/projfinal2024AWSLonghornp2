@@ -43,4 +43,4 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: mysql-pvc-rwx
+          claimName: wp-pvc-rwx
